@@ -6,6 +6,7 @@
 
 %\documentclass[12pt,a4paper]{article}
 
+\usepackage{float}
 \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -35,7 +36,7 @@
 % Figure, table and source code style and macros
 % you can override these, also in text, like \def\dirfigs{MyDiretory\}
 \def\dirfigs{figs/}
-\def\dirsrc{./}
+\def\dirsrc{}
 
 \captionsetup[figure]{font={small,it,sf},labelfont={small,sf,bf},name={Fig.},labelsep=colon}
 \captionsetup[table]{font={small,it,sf},labelfont={small,sf,bf},name={Tab.},labelsep=colon}
@@ -77,12 +78,12 @@
 % #1 Filename
 % #2 Caption
 % #3 table environment options
-\newcommand\dsdsrc[3]{
-	\begin{table}[#3]
+\newcommand\dsdsrc[4]{
+	\begin{table}[H]
 		\centering
 		  \framebox{
-		    \rule{8pt}{0pt}
-			  \lstinputlisting{\dirsrc#1}
+        \rule{8pt}{0pt}
+        \lstinputlisting[firstline=#3,lastline=#4]{\dirsrc#1}
       }
 		\caption{#2}
 		\label{src:#1}
