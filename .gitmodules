@@ -1,0 +1,6 @@
+[submodule "ex03"]
+	path = ex03
+	url = https://github.com/DSD-Gruppe-37/ex03_arithmetic_and_logical_operators.git
+[submodule "ex04"]
+	path = ex04
+	url = https://github.com/DSD-Gruppe-37/ex04_dataflow-style_and_combinatorial_designs.git
