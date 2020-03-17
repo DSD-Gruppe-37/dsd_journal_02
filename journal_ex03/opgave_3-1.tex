@@ -19,14 +19,24 @@ Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adde
 
 Den fulde entity, med de tilhørende architectures ses i \srcref{ex3/VHDL/fourbitaddersimple.vhd}, det hele er samlet i én fil.
 
-\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned with carry}{0}{32}
+% \dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned with carry}{0}{32}
 
-\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{34}{47}
+% \dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{34}{47}
 
-\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{48}{60}
+% \dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{48}{60}
 
 % Results
 \subsubsection{Resultater}
+
+\dsdfig{fulladdersRTL}{9cm}{(a) signed  full adder, (b) unsigned full adder}
+
+\dsdfig{unsignedcarryRTL}{9cm}{RTL view af en unsigned full adder med carry  }
+
+\dsdfig{unsignedtechmap}{9cm}{Technology map view af unsigned full adder med carry - inkl. udsnit af de interne blokkes arbejde.}
+
+Ved sammenligning RTL-views ses det funktionaliteten i de adders er ens, dette vises på \figref{fulladdersRTL}
+
+
 
 % Discussion
 \subsubsection{Diskussion}
