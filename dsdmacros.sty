@@ -80,9 +80,8 @@
 % #1 Filename
 % #2 Figure width
 % #3 Caption
-% #4 figure environment options
-\newcommand\dsdfig[4]{
-	\dsdfigbase{\includegraphics[width=#2]{\dirfigs#1}}{#1}{#3}{#4}
+\newcommand\dsdfig[3]{
+	\dsdfigbase{\includegraphics[width=#2]{\dirfigs#1}}{#1}{#3}{H}
 }
 
 \newcommand\dsdtab[4]{
@@ -96,7 +95,8 @@
 
 % #1 Filename
 % #2 Caption
-% #3 table environment options
+% #3 first line
+% #4 last line
 \newcommand\dsdsrc[4]{
 	\begin{table}[H]
 		\centering
