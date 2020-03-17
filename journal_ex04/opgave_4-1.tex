@@ -1,17 +1,42 @@
-\subsection{Binary to 7-Segment Decoder Using Selected Signal Assignment
-(“WITH-SELECT”)}
+{
+  % defines a label prefix local to this file
+  % to avoid clashing references when including the same file multiple times
+  \newcommand{\labelprefix}{src4-1}
 
-% Intro 
-\subsubsection{Introduktion}
+  \subsection{Binary to 7-Segment Decoder Using Selected Signal Assignment}
 
-% Design
-\subsubsection{Design og implementering}
+  % Intro 
+  \subsubsection{Introduktion}
 
-% Results
-\subsubsection{Resultater}
+  I denne opgave skal der implementeres en BCD til 7-segment decoder ved brug af ``Selected Signal Assignment'', altså en såkaldt \texttt{WITH-SELECT} statement i VHDL.
 
-% Discussion
-\subsubsection{Diskussion}
+  % Design
+  \subsubsection{Design og implementering}
 
-% Conclusion
-\subsubsection{Konklusion}
+  Source koden for vores decoder ses herunder i \coderef[\labelprefix]{ex04/vhdl/bin2sevenseg.vhd}.
+  Som givet i opgavens IBD har vi et 4-bit input signal \texttt{bin} som mappes til et 7-bit output signal \texttt{Sseg}, således at displayet viser den hexadecimale værdi angivet på inputtet. Desuden har vi inkluderet en \texttt{WHEN OTHERS} situation til sidst for at undgå latches i vores design.
+
+  \includecode[\labelprefix]{ex04/vhdl/bin2sevenseg.vhd}{Implementering af BCD til 7-segment i VHDL}{}
+
+  Vores decoder entity testes med en testbench entity \texttt{UnitUnderTest} som set nedenfor i \coderef[\labelprefix]{ex04/vhdl/UnitUnderTest.vhd}.
+
+  \includecode[\labelprefix]{ex04/vhdl/UnitUnderTest.vhd}{Testbench til test at decoder entity}{linerange={1-25,49}}
+
+  % Results
+  \subsubsection{Resultater}
+
+  I opgaven undersøges en multiplexer (mux) lavet vha. \texttt{WITH-SELECT} statement i VHDL, til at styre et 7-segment display.
+  Når koden syntetiseres ser vi på det resulterende RTL-view \figref{ex4-1_rtl_view} at der ikke bare er én, men hele 7 multiplexere.
+
+  \dsdfig{ex4-1_rtl_view}{8cm}{RTL-view af den syntetiserede decoder}
+
+  % Discussion
+  \subsubsection{Diskussion}
+
+  Vi ser ud fra vores RTL-view på \figref{ex4-1_rtl_view} at vores ene selected signal assignment er blevet syntetiseres til 7 multiplexere som hver driver et enkelt segment på 7-segment displayet med deres select baseret på \texttt{bin} inputtet. Dette giver mening da hver segment så kan drives af en meget simpel multiplexer.
+
+  % Conclusion
+  \subsubsection{Konklusion}
+
+  Vi har i denne opgave erfaret at man med en meget simpel \texttt{WITH-SELECT} statement nemt kan lave omfattende mapninger mellem signaler af forskellige størrelser. Dette står i kontrast med hvor tidskrævende og fejlbarligt det ville være at lave denne mapning med basale logiske operatorer.
+}

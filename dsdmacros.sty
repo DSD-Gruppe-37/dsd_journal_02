@@ -67,6 +67,8 @@
 \newcommand\Tabref[1]{Tab. \ref{tab:#1}}
 \newcommand\srcref[1]{source code table \ref{src:#1}}
 \newcommand\Srcref[1]{Source code table \ref{src:#1}}
+\newcommand\coderef[2][src]{source code table \ref{#1:#2}}
+\newcommand\CodeRef[2][src]{Source code table \ref{#1:#2}}
 
 \newcommand\dsdfigbase[4]{
 	\begin{figure}[#4]
@@ -110,6 +112,22 @@
       }
 		\caption{#2}
 		\label{src:#1}
+	\end{table}
+}
+
+% #1 Label prefix
+% #2 Filename
+% #3 Caption
+% #4 Listing options
+\newcommand\includecode[4][src]{
+	\begin{table}[H]
+		\centering
+		  \framebox{
+        \rule{8pt}{0pt}
+        \lstinputlisting[#4]{\dirsrc#2}
+      }
+		\caption{#3}
+		\label{#1:#2}
 	\end{table}
 }
 
