@@ -1,9 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage{dsdmacros}
 
-%\usepackage[danish]{babel} % danish may not be present, if not try "sudo apt install texlive-lang-european" a fmtutil -sys --all
-%\selectlanguage{danish}
-
 \newcommand\mymaketitle[1]{
    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
    \rule{\textwidth}{0.4pt}
@@ -17,7 +14,7 @@
 \begin{document}
 
 \title{
-	\mymaketitle{E2DSD\\Øvelse \#2 - Arithmetic and logical operators og Dataflow-style combinatorial designs in VHDL}
+	\mymaketitle{E2DSD --- Journal \#2\\``Arithmetic and Logical Operators'' og ``Dataflow-style Combinatorial Designs''}
 }
 \author{
 	Gruppe \#37\\
@@ -28,9 +25,13 @@
 \date{2020-03-17}
 
 \maketitle
-\newpage
-\section{Øvelse 3}
+\clearpage
+
+\tableofcontents
+% \listoffigures
+\clearpage
+
 \input{ex3.tex}
-\section{Øvelse 4}
 \input{ex4.tex}
+
 \end{document}

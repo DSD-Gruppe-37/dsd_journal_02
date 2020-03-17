@@ -1,0 +1,35 @@
+\subsection{Signed and Unsigned Arithmetic}
+
+% Intro 
+\subsubsection{Introduktion}
+
+Ved at udnytte VHDLs indbyggede arithmetiske funktioner, har vi mulighed for at simplificere four-bit-adderen fra øvelse 2 (Ø2).
+Dette vil ske vha.  \textit{casting} fra \texttt{std\_logic\_vector} til \texttt{unsigned} / \texttt{signed}. 
+
+Vi har i denne opgave, skrevet og testet 3 four-bit-adders: signed, unsigned og unsigned w. carry, 
+
+% Design
+\subsubsection{Design og implementering}
+
+Vi brugte i Ø2 \texttt{std\_logic\_vector} som input og output - dette vil ske igen. 
+
+Dog bliver både signalet der behandles, midlertidigt lavet om til enten \texttt{signed} eller \texttt{unsigned}.
+
+Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adderes, trækkes fra, multipliceres og divideres.
+
+Den fulde entity, med de tilhørende architectures ses i \srcref{ex3/VHDL/fourbitaddersimple.vhd}, det hele er samlet i én fil.
+
+\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned with carry}{0}{32}
+
+\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{34}{47}
+
+\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{48}{60}
+
+% Results
+\subsubsection{Resultater}
+
+% Discussion
+\subsubsection{Diskussion}
+
+% Conclusion
+\subsubsection{Konklusion}

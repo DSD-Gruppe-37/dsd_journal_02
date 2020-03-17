@@ -4,13 +4,10 @@
 %       version 0.1, CEF
 %       text file (.tex) assumed to be in utf8 format 
 
-%\documentclass[12pt,a4paper]{article}
-
-\usepackage{float}
 \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel} % danish may not be present, if not try "sudo apt install texlive-lang-european" a fmtutil -sys --all
+\usepackage[english, danish]{babel} % NOTICE might not compile if danish language pack is not installed
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{listings}
@@ -18,9 +15,31 @@
 \usepackage{xcolor} 
 \usepackage[marginparsep=8pt,left=3cm,right=3cm,top=2.4cm,bottom=2.4cm]{geometry}
 
+% Additional packages
+\usepackage{booktabs}
+\usepackage{float}
+
 \hfuzz=15pt
 \vfuzz=12pt
 %\hbadness=10000
+
+% Clickable PDF links..
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% Section numbering.. - remove leading number.
+% \makeatletter
+% \renewcommand{\@seccntformat}[1]{}
+% \makeatother
+% \makeatletter
+% \let\latexl@section\l@section
+% \def\l@section#1#2{\begingroup\let\numberline\@gobble\latexl@section{#1}{#2}\endgroup}
+% \makeatother
 
 % Etc 
 \usepackage{enumitem}
@@ -31,21 +50,21 @@
 \def\bs{\hspace{-\parindent}}
 
 % Titlepage defs
-\newcommand\dsdtitlefont[1]{\uppercase{\sf{#1}}}
+\newcommand\titlefont[1]{\uppercase{\sf{#1}}}
 
 % Figure, table and source code style and macros
 % you can override these, also in text, like \def\dirfigs{MyDiretory\}
 \def\dirfigs{figs/}
-\def\dirsrc{}
+\def\dirsrc{./}
 
 \captionsetup[figure]{font={small,it,sf},labelfont={small,sf,bf},name={Fig.},labelsep=colon}
 \captionsetup[table]{font={small,it,sf},labelfont={small,sf,bf},name={Tab.},labelsep=colon}
 
 % NOTE: do not use underscores in filename, will mess up fig label
-\newcommand\figref[1]{figure \ref{fig:#1}}
-\newcommand\Figref[1]{Figure \ref{fig:#1}}
-\newcommand\tabref[1]{table \ref{tab:#1}}
-\newcommand\Tabref[1]{Tabel \ref{tab:#1}}
+\newcommand\figref[1]{fig. \ref{fig:#1}}
+\newcommand\Figref[1]{Fig. \ref{fig:#1}}
+\newcommand\tabref[1]{tab. \ref{tab:#1}}
+\newcommand\Tabref[1]{Tab. \ref{tab:#1}}
 \newcommand\srcref[1]{source code table \ref{src:#1}}
 \newcommand\Srcref[1]{Source code table \ref{src:#1}}
 
