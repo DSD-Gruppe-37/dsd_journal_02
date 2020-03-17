@@ -1,16 +1,48 @@
-\subsection{The Conditional Signal Assignment (“WHEN-ELSE”)}
+{
+  % defines a label prefix local to this file
+  % to avoid clashing references when including the same file multiple times
+  \newcommand{\labelprefix}{src4-2}
 
-% Intro 
-\subsubsection{Introduktion}
+  \subsection{The Conditional Signal Assignment}
 
-% Design
-\subsubsection{Design og implementering}
+  % Intro 
+  \subsubsection{Introduktion}
 
-% Results
-\subsubsection{Resultater}
+  Vi ønsker i denne opgave at implementere systemet der er vist i opgavetekstens figur 2.
+  Dette skal gøres med en ``Conditional Signal Assignment'', dvs. en \texttt{WHEN-ELSE} statement i VHDL.
+  Med denne implementering viser vi en anden måde at multiplex/demultiplex i VHDL.
 
-% Discussion
-\subsubsection{Diskussion}
+  % Design
+  \subsubsection{Design og implementering}
 
-% Conclusion
-\subsubsection{Konklusion}
+  Vores implementering af HEX multiplexeren ses i \coderef[\labelprefix]{ex04/vhdl/hex_mux.vhd}.
+  Vi bruger vores \texttt{bin2sevenseg} entity fra forrige opgave, der mapper det binære input \texttt{bin} til tre interne signaler.
+  Output signalet \texttt{tsseg} gives så en værdi baseret på inputtet \texttt{sel}, hvoraf to output er hardcoded til at vise "On" og "Err", det tredje er en konkatinering af de interne signaler.
+
+  \includecode[\labelprefix]{ex04/vhdl/hex_mux.vhd}{Implementering af HEX multiplexer med Conditional Signal Assignment}{}
+
+  Som i forrige opgave er vores HEX multiplexer testet med testbench entity \texttt{UnitUnderTest}, dette ses i \coderef[\labelprefix]{ex04/vhdl/UnitUnderTest.vhd}
+
+  \includecode[\labelprefix]{ex04/vhdl/UnitUnderTest.vhd}{Test af HEX multiplexer}{linerange={1-17,27-37,49}}
+
+  % Results
+  \subsubsection{Resultater}
+
+  Vi har brugt conditional signal assignment til at implementere en multiplexer der vælger mellem tre forskellige output. Syntesen af vores kode giver det resulterende RTL-view som set på \figref{ex4-2_rtl_view}.
+
+  Vi så ingen inferred latches i vores design, da vi som set på \coderef[\labelprefix]{ex04/vhdl/hex_mux.vhd} linje 40 har husket en assignment uden condition, som bliver brugt i alle de tilfælde der ikke eksplicit er taget højde for.
+
+  \dsdfig{ex4-2_rtl_view}{\textwidth}{RTL-view af multiplexer implementeret med conditional signal assignment}
+
+  % Discussion
+  \subsubsection{Diskussion}
+  
+  Ud fra det resulterende RTL-view kan vi se at \textit{synthesizeren} har lavet vores HEX multiplexer med to multiplex komponenter i serie.
+  Vores \texttt{sel} input sammenlignes med hardcodede værdier og bruges som input select til de to multiplexere. Den første vælger så mellem en hardcoded værdi og det sammensatte output fra vores decodere, den anden vælger mellem output fra forrige mux eller en hardcoded værdi. Dermed har vi opnået en 3-input mux som ønsket.
+
+  % Conclusion
+  \subsubsection{Konklusion}
+
+  Som i forrige opgave har vi her set at man med en meget simpel \texttt{WHEN-ELSE} statement kan vælge mellem forskellige input. En af styrkerne ved en \texttt{WHEN-ELSE} er at der kan bruges forskellige signaler til hver condition, designet i denne opgave var dog så simpelt at det ikke var nødvendigt.
+
+}
