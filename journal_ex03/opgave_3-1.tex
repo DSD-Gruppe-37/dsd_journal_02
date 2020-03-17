@@ -15,15 +15,13 @@ Vi brugte i Ø2 \texttt{std\_logic\_vector} som input og output - dette vil ske 
 
 Dog bliver både signalet der behandles, midlertidigt lavet om til enten \texttt{signed} eller \texttt{unsigned}.
 
-Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adderes, trækkes fra, multipliceres og divideres.
+Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adderes, trækkes fra, multipliceres og divideres. Den fulde entity, med de tilhørende architectures ses i \srcref{ex03/vhdl/fourbitaddersimple.vhd}, det hele er samlet i én fil.
 
-Den fulde entity, med de tilhørende architectures ses i \srcref{ex3/VHDL/fourbitaddersimple.vhd}, det hele er samlet i én fil.
+\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Entity dekleration, der går igen i de 3 adders og Four-bit-adder: architecture: unsigned with carry}{0}{32}
 
-% \dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned with carry}{0}{32}
+\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{34}{47}
 
-% \dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{34}{47}
-
-% \dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{48}{60}
+\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{48}{60}
 
 % Results
 \subsubsection{Resultater}
@@ -37,9 +35,13 @@ Den fulde entity, med de tilhørende architectures ses i \srcref{ex3/VHDL/fourbi
 Ved sammenligning RTL-views ses det funktionaliteten i de adders er ens, dette vises på \figref{fulladdersRTL}
 
 
+%//TODO Indsæt billeder af adders på DE-2 BOARD
+
+\dsdfig{unsignedtiming}{9cm}{Udsnit af timingsimuleringeringen der viser funktionaliten for adderen med carry.}
 
 % Discussion
 \subsubsection{Diskussion}
 
 % Conclusion
 \subsubsection{Konklusion}
+
