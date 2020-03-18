@@ -1,0 +1,8 @@
+pdf("figs/ex3-3-plot.pdf")
+x <- c(1,2,4,8,16,32)
+y <-c(1,4,29,96,337,1403)
+plot(x,y,xlab="Bits",ylab="LEs",axes = FALSE)
+lines(x,y)
+axis(side = 1, at = x)
+axis(side = 2, at = y)
+dev.off()
