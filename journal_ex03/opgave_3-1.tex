@@ -15,35 +15,34 @@ Vi brugte i Ø2 \texttt{std\_logic\_vector} som input og output - dette vil ske 
 
 Dog bliver både signalet der behandles, midlertidigt lavet om til enten \texttt{signed} eller \texttt{unsigned}.
 
-Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adderes, trækkes fra, multipliceres og divideres. Den fulde entity, med de tilhørende architectures ses i \srcref{ex03/vhdl/fourbitaddersimple.vhd}, det hele er samlet i én fil.
+Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adderes, trækkes fra, multipliceres og divideres. Den fulde entity, med de tilhørende architectures ses i \coderef[fb_ent]{ex03/vhdl/fourbitaddersimple.vhd}, \coderefsimple[fb_unsigned]{ex03/vhdl/fourbitaddersimple.vhd} og \coderefsimple[fb_signed]{ex03/vhdl/fourbitaddersimple.vhd}, det hele er samlet i én fil.
 
-\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Entity dekleration, der går igen i de 3 adders og Four-bit-adder: architecture: unsigned with carry}{0}{32}
+\includecode[fb_ent]{ex03/vhdl/fourbitaddersimple.vhd}{Entity dekleration, der går igen i de 3 adders og Four-bit-adder: architecture: unsigned with carry}{linerange={0-32}}
 
-\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{34}{47}
+\includecode[fb_unsigned]{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: unsigned\_impl}{linerange={34-47}}
 
-\dsdsrc{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{48}{60}
+\includecode[fb_signed]{ex03/vhdl/fourbitaddersimple.vhd}{Four-bit-adder: architecture: signed\_impl}{linerange={48-60}}
 
 % Results
 \subsubsection{Resultater}
 
 Efter fuldført syntese kan vi se på RTL diagrammerne, der viser den funktionelle opbygning af koden, disse ses i 
 
-\dsdfig{ex3-1-fulladdersRTL}{9cm}{(a) signed  full adder, (b) unsigned full adder}
+\dsdfig{ex3-1-fulladdersRTL}{10cm}{(a) signed  full adder, (b) unsigned full adder}
 
-\dsdfig{ex3-1-unsignedcarryRTL}{9cm}{RTL view af en unsigned full adder med carry  }
+\dsdfig{ex3-1-unsignedcarryRTL}{12cm}{RTL view af en unsigned full adder med carry  }
 
-\dsdfig{ex3-1-unsignedtechmap}{9cm}{Technology map view af unsigned full adder med carry - inkl. udsnit af de interne blokkes arbejde.}
+\dsdfig{ex3-1-unsignedtechmap}{10cm}{Technology map view af unsigned full adder med carry - inkl. udsnit af de interne blokkes arbejde.}
 
 Desuden kan vi se på technology map viewet, der viser hvordan FPGA boardet mapper dets interne forbindelser, dette ses i \figref{ex3-1-unsignedtechmap} og \figref{ex3-1-unsignedsignedpostmap}.
 
-\dsdfig{ex3-1-unsignedsignedpostmap}{9cm}{Udsnit af technology map view  af en signed og unsigned adder. Der er ingen forskel i praksis.}
+\dsdfig{ex3-1-unsignedsignedpostmap}{12cm}{Udsnit af technology map view  af en signed og unsigned adder. Der er ingen forskel i praksis.}
 
 Ydermere kan der sættes en timing simulation op der viser den system under påvirkning, dette ses i \figref{ex3-1-unsignedtiming}.
 
-%//TODO Indsæt billeder af adders på DE-2 BOARD
 \dsdfig{ex3-1-unsignedtiming}{9cm}{Udsnit af timingsimuleringeringen der viser funktionaliten for adderen med carry.}
 
-For at teste de to adders funktionalitere satte vi nogle testcases op, der blot skulle addere to binære input, den ene test er vist i \tabref{shiftdivtest}.
+For at teste de to adders funktionalitere satte vi nogle testcases op, der blot skulle addere to binære input, den ene test er vist i \tabref{signedunsigedtest}.
 
 \dsdtab{
     \begin{tabular}{p{4cm}p{4cm}p{4cm}}\toprule
