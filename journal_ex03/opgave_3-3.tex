@@ -3,6 +3,9 @@
 % Intro 
 \subsubsection{Introduktion}
 
+
+FPGA-boardet vi arbejder med har en række indbyggede 9-bits multipiere - hvad sker der hvis man slår dem fra? 
+
 % Design
 \subsubsection{Design og implementering}
 
@@ -39,18 +42,22 @@
 \subsubsection{Diskussion}
 
 \dsdtab{
-    \begin{tabular}{p{1cm}p{1cm}}\toprule
- Bits & LEs \\\midrule
-1 & 1\\
-2 & 4\\
+    \begin{tabular}{p{1cm}p{1cm}p{2cm}}\toprule
+ Bits & LEs  \\ \midrule
+1 & 1  \\
+2 & 4 \\
 4 & 29\\
 8 & 96\\
 16 & 337\\
-32 & 1403
+32 & 1403 
 \end{tabular}
 }{Forholdet m. bits og logiskeelementer}{logisketabel}
 
+\dsdfig{ex3-3-multchaos}{12cm}
+{Et kaotisk indblik i en 32 bits multiplier --- ét system med 1403 logiskeelementer, for mange til at have på én side.}
+Det ses ud fra compilation reporten at der ved 2 x 32 bit input skal bruges 1403 logiskeelementer, se Technology map viewet \figref{fig:ex3-3-multchaos}
 
+Ved test med DSP block slået fra skulle der først bruges logiskeelementer v. 32 bits multiplikation, alt derunder blev klaret af den embedded multiplier.
 
 % Conclusion
 \subsubsection{Konklusion}
