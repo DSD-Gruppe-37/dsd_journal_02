@@ -1,16 +1,50 @@
-\subsection{Table Lookup}
+{
+  % defines a label prefix local to this file
+  % to avoid clashing references when including the same file multiple times
+  \newcommand{\labelprefix}{src4-3}
 
-% Intro 
-\subsubsection{Introduktion}
+  \subsection{Table Lookup}
 
-% Design
-\subsubsection{Design og implementering}
+  % Intro 
+  \subsubsection{Introduktion}
 
-% Results
-\subsubsection{Resultater}
+  I denne opgave vil vi bruge en tredje metode til implementering af multiplexing, nemlig et ``lookup table''.
+  Vi vil med denne metode implementere sandhedstabellen som vist i opgavens tabel 1.
+  Lookup tabellen defineres som en hardcoded konstant array med output værdier, hvorefter den numeriske værdi af inputsne bruges som indeks i arrayet.
 
-% Discussion
-\subsubsection{Diskussion}
+  % Design
+  \subsubsection{Design og implementering}
+  
+  Vi har ud fra tabel 1 i opgaven implementeret entity \texttt{table\_lookup} med 3 inputs \texttt{a}, \texttt{b} og \texttt{c}, og outputtet \texttt{x}.
+  \CodeRef[\labelprefix]{ex04/vhdl/table_lookup.vhd} viser vores implementering, med den konstante array \texttt{table} der har output værdierne som defineret i sandhedstabelle og type casting af de tre input, først til typen \texttt{unsigned} og derefter til \texttt{integer}, således at værdien kan bruges som indeks.
 
-% Conclusion
-\subsubsection{Konklusion}
+  \includecode[\labelprefix]{ex04/vhdl/table_lookup.vhd}{Implementering af table lookup i VHDL}{}
+
+  Vi har igen brugt vores testbench entity \texttt{UnitUnderTest} til at teste vores design. Set i \coderef[\labelprefix]{ex04/vhdl/UnitUnderTest.vhd} er vores architecture for test af table lookup entity.
+
+  \includecode[\labelprefix]{ex04/vhdl/UnitUnderTest.vhd}{Test af entity \texttt{table\_lookup}}{linerange={16-17,39-49}}
+
+  % Results
+  \subsubsection{Resultater}
+
+  Vores design resulterede efter syntetisering i det RTL-view som er set på \figref{ex4-3_rtl_view}.
+
+  Desuden opstillede vi en funktionel simuleringstest som set på \figref{ex4-3_functional_simulation} hvor alle de 8 mulige kombinationer af inputs og resulterende outputs gennemgås.
+  
+  \dsdfig{ex4-3_rtl_view}{8cm}{RTL-view af den syntetiserede table lookup}
+
+  \dsdfig{ex4-3_functional_simulation}{\textwidth}{Funktionel simulering af table lookup}
+
+  % Discussion
+  \subsubsection{Diskussion}
+
+  Vi ser på \figref{ex4-3_rtl_view} at vores table lookup er blevet syntetiseret til et multiplexer med vores tre input som select og vores hardcodede værdi som data, dette stemmer overens med vores forventning.
+  
+  Desuden kan vi ud fra vores funktionelle simulation som set på \figref{ex4-3_functional_simulation} se, at sammenhængen mellem input og output stemmer overens med sandhedstabellen. Vi ser desuden at de to outputs som er sat til ``don't care'' (markeret med rødt på billedet) bliver sat til 0 i simulationen.
+
+  % Conclusion
+  \subsubsection{Konklusion}
+
+  Vi har i denne opgave erfaret at man som alternativ til \texttt{WITH-SELECT} og \texttt{WHEN-ELSE} også kan bruge en array af konstante værdier og omdanne input til et indeks i arrayet. Dette bliver korrekt omdannet til en multiplexer ligesom de andre selection metoder.
+  Vi erfarede også at i den funktionelle simulation bliver ``don't care'' holdt til 0.
+}
