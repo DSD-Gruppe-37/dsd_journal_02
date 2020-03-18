@@ -4,18 +4,25 @@
 
 % Intro 
 \subsubsection{Introduktion}
-Vi ønsker i denne opgave at benytte et af VHDL's biblioteker til simplificere nogle processerser. Dette gøre ved at bruge \textit{concatenation}. Ved at udnytte funktioner fra \texttt{ieee.numeric\_std.ALL} - specielt dens multiplikations og divisions operatøre, vil vi kunne omarrangere bits på en nem måde.
+Vi ønsker i denne opgave at benytte VHDL's evne til at konkatinere arrays som f.eks. \texttt{std\_logic\_vector} sammen ved hjælp af \texttt{\&} operatoren.
+Dette vil vi bruge til at implementere de logiske operationer ``shift left'', ``shift right'' og ``rotate right''.
+
 % Design
 \subsubsection{Design og implementering}
 
-Med en viden om at \texttt{0b0001 * 2 = 0b0010 \& 0b0010 * 4 = 0b1000}, og \texttt{0b1000 / 2 = 0b0100 \& 0b0100 / 4 = 0b0001}, skrev vi en kode der på den måde implementerede en bitrearranger, denne ses i \srcref{ex03/vhdl/shift_div.vhd}. Udover bitshifterne, er der også en bitrotater der tager to \textit{slices} af vores \texttt{std\_logic\_vector} og omarrangere dem i en ny \texttt{std\_logic\_vector}.
+Vi implementerer den givne interface fra opgaven og bruger som beskrevet concatination operatoren \texttt{\&} til at shift og rotate vores input på tre forskellige måder.
+Til ``shift left'' tages et udsnit af inputtet og konkatineres med et 0.
+Til ``shift right'' tages to 0'er og konkatineres med et udsnit af inputtet.
+Til ``rotate right'' tages et udsnit af lavest bits fra inputtet og konkatineres med et udsnit af højeste bits fra inputtet.
+Vores implementering ses på \srcref{ex03/vhdl/shift_div.vhd}.
 
 \dsdsrc{ex03/vhdl/shift_div.vhd}
 {Entitien der viser de 3 funktioner: \texttt{a\_shl,a\_shr,a\_ror}}
 {0}{20}
 
-\dsdsrc{ex03/vhdl/UnitUnderTest.vhd}{Testbench port mappingen}{59}{70}
+\includecode[tb_shift]{ex03/vhdl/UnitUnderTest.vhd}{Testbench port mapping}{linerange={59-70}}
 
+Test af vores shift/rotate entity ses på \coderef[tb_shift]{ex03/vhdl/UnitUnderTest.vhd}.
 Ved at sende et output til LED'erne har vi mulighed for at få et visuelt feedback, og dermed udføre en række test, som ses i \tabref{shiftdivtest}.
 
 \dsdtab{
@@ -50,12 +57,10 @@ Testen i \tabref{shiftdivtest} viste tilfredsstillende resultater, der blev 1 sh
 
 % Discussion
 \subsubsection{Diskussion}
-% //TODO shift_div diskussion
+
 Efter syntesen gennemgik vi RTL mappingen og technology mapping viewet - de viser begge at der ikke bliver brugt et eneste logisk element i denne proces. Der kan altså shiftes og roteres \emph{gratis}\footnote{Dog gælder: $a\cdot 2^n \quad a, n \in \mathbb{Z}$} i VHDL.
 
 % Conclusion
 \subsubsection{Konklusion}
 
 Med få linjer kode kan man skabe en \emph{gratis} funktionalitet, forstået på den måde at \textit{ingen} logiske elementer brugt.
-
-% //TODO shift_div konklusion
