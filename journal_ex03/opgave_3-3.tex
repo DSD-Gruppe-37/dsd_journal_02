@@ -6,11 +6,38 @@
 % Design
 \subsubsection{Design og implementering}
 
+
+
+
+\dsdfig{ex3-3-mult_techmap}{9cm}
+{Technology map view der viser \texttt{mult} funktionen.}
+
+
+\dsdfig{ex3-3-dspblock}{9cm}
+{Ved at aktivere DSP Block Balancing, tvinges FGPA'en til at bruge hardware logikelementer --- Er vist et udsnit af mappingen.}
+\dsdsrc{ex03/vhdl/mult.vhd}
+{Entitiy der viser de multiplier funktionen: \texttt{mult}}
+{0}{20}
+\dsdsrc{ex03/vhdl/unitundertest.vhd}
+{Testbench for \texttt{mult}}
+{65}{73}
+
 % Results
 \subsubsection{Resultater}
 
+\dsdtab{
+    \begin{tabular}{p{4cm}p{4cm}p{4cm}}\toprule
+ Input & Forventet output & Reelt output \\\midrule
+\texttt{A: 0b00010100 $\times$\newline B: 0b00111000\phantom{$\times$}} & 
+\texttt{0b0000010001100000} &\texttt{0b0000010001100000}
+\end{tabular}
+}{Testcase til \texttt{mult}}{signedunsigedtest}
+
+
+\footnote{Dog gælder: $a\cdot b \quad a,b \in 2^n \quad n \in \mathbb{Z}$}
 % Discussion
 \subsubsection{Diskussion}
 
 % Conclusion
 \subsubsection{Konklusion}
+Denne øvelse viste ikke meget om multiplikation, udover at det fungere fremragende på FGPA'en, men viste tilgengæld hvor effektivt FPGA'en kan syntetiseres.
