@@ -26,19 +26,19 @@ Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adde
 % Results
 \subsubsection{Resultater}
 
+Efter fuldført syntese kan vi se på RTL diagrammerne, der viser den funktionelle opbygning af koden, disse ses i 
+
 \dsdfig{ex3-1-fulladdersRTL}{9cm}{(a) signed  full adder, (b) unsigned full adder}
 
 \dsdfig{ex3-1-unsignedcarryRTL}{9cm}{RTL view af en unsigned full adder med carry  }
 
 \dsdfig{ex3-1-unsignedtechmap}{9cm}{Technology map view af unsigned full adder med carry - inkl. udsnit af de interne blokkes arbejde.}
 
-Ved sammenligning RTL-views ses det funktionaliteten i de adders er ens, dette vises på \figref{ex3-1-fulladdersRTL} og ses på technology map viewet i \figref{ex3-1-unsignedsignedpostmap}
-
-
+Desuden kan vi se på technology map viewet, der viser hvordan FPGA boardet mapper dets interne forbindelser, dette ses i \figref{ex3-1-unsignedtechmap} og \figref{ex3-1-unsignedsignedpostmap}.
 
 \dsdfig{ex3-1-unsignedsignedpostmap}{9cm}{Udsnit af technology map view  af en signed og unsigned adder. Der er ingen forskel i praksis.}
 
-
+Ydermere kan der sættes en timing simulation op der viser den system under påvirkning, dette ses i \figref{ex3-1-unsignedtiming}.
 
 %//TODO Indsæt billeder af adders på DE-2 BOARD
 \dsdfig{ex3-1-unsignedtiming}{9cm}{Udsnit af timingsimuleringeringen der viser funktionaliten for adderen med carry.}
@@ -46,17 +46,18 @@ Ved sammenligning RTL-views ses det funktionaliteten i de adders er ens, dette v
 For at teste de to adders funktionalitere satte vi nogle testcases op, der blot skulle addere to binære input, den ene test er vist i \tabref{shiftdivtest}.
 
 \dsdtab{
-\begin{tabular}{p{4cm}p{4cm}p{4cm}}\toprule
+    \begin{tabular}{p{4cm}p{4cm}p{4cm}}\toprule
  Input & Forventet output & Reelt output \\\midrule
 \texttt{A: 0b0110+\newline B: 0b0010\phantom{+}} & 
 \texttt{S: 0b1000\newline U: 0b1000} & 
 \texttt{S: 0b1000\newline U: 0b1000}
 \end{tabular}
 }{Testsetup til signed og unsigned four-bit-adders.}{signedunsigedtest}
- 
+
 
 % Discussion
 \subsubsection{Diskussion}
+Sammenholder man de to RTL-views ses det funktionaliteten i de adders er ens, dette vises på \figref{ex3-1-fulladdersRTL} og ses på technology map viewet i \figref{ex3-1-unsignedsignedpostmap}.
 
 Ved den funktionelle timingsimulering fremkom en række uforklarlige outputs, se \figref{ex3-1-strangeTimingSignedUnsignedFunctional} .
 

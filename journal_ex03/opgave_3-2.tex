@@ -46,7 +46,6 @@ Testen i \tabref{shiftdivtest} viste tilfredsstillende resultater, der blev 1 sh
 \dsdfig{ex3-2-shiftdivtechmap}{9cm}
 {Technology mapping view af hele \texttt{shift\_div} funktionen --- igen ses det at der flyttes blot rundt på interne forbindelser.}
 
-Efter syntesen gennemgik vi RTL mappingen og technology mapping viewet - de viser begge at der ikke bliver brugt et eneste logisk element i denne proces. Der kan altså multipliceres og divideres \emph{gratis}\footnote{Dog gælder: $a\cdot b \quad a,b \in 2^n \quad n \in \mathbb{Z}$} i VHDL
 
 % //TODO Billede af shift metoder.
 
@@ -54,6 +53,7 @@ Efter syntesen gennemgik vi RTL mappingen og technology mapping viewet - de vise
 % Discussion
 \subsubsection{Diskussion}
 % //TODO shift_div diskussion
+Efter syntesen gennemgik vi RTL mappingen og technology mapping viewet - de viser begge at der ikke bliver brugt et eneste logisk element i denne proces. Der kan altså shiftes og roteres \emph{gratis}\footnote{Dog gælder: $a\cdot 2^n \quad a, n \in \mathbb{Z}$} i VHDL.
 
 % Conclusion
 \subsubsection{Konklusion}
