@@ -26,41 +26,41 @@ Dette giver mulighed for at bruge regneoperatorer på en ny måde - der kan adde
 % Results
 \subsubsection{Resultater}
 
-\dsdfig{ex3-1_fulladdersRTL}{9cm}{(a) signed  full adder, (b) unsigned full adder}
+\dsdfig{ex3-1-fulladdersRTL}{9cm}{(a) signed  full adder, (b) unsigned full adder}
 
-\dsdfig{ex3-1_unsignedcarryRTL}{9cm}{RTL view af en unsigned full adder med carry  }
+\dsdfig{ex3-1-unsignedcarryRTL}{9cm}{RTL view af en unsigned full adder med carry  }
 
-\dsdfig{ex3-1_unsignedtechmap}{9cm}{Technology map view af unsigned full adder med carry - inkl. udsnit af de interne blokkes arbejde.}
+\dsdfig{ex3-1-unsignedtechmap}{9cm}{Technology map view af unsigned full adder med carry - inkl. udsnit af de interne blokkes arbejde.}
 
-Ved sammenligning RTL-views ses det funktionaliteten i de adders er ens, dette vises på \figref{ex3-1_fulladdersRTL} og ses på technology map viewet i \figref{ex3-1_unsignedsignedpostmap}
+Ved sammenligning RTL-views ses det funktionaliteten i de adders er ens, dette vises på \figref{ex3-1-fulladdersRTL} og ses på technology map viewet i \figref{ex3-1-unsignedsignedpostmap}
 
 
 
-\dsdfig{ex3-1_unsignedsignedpostmap}{9cm}{Udsnit af technology map view  af en signed og unsigned adder. Der er ingen forskel i praksis.}
+\dsdfig{ex3-1-unsignedsignedpostmap}{9cm}{Udsnit af technology map view  af en signed og unsigned adder. Der er ingen forskel i praksis.}
 
 
 
 %//TODO Indsæt billeder af adders på DE-2 BOARD
-\dsdfig{ex3-1_unsignedtiming}{9cm}{Udsnit af timingsimuleringeringen der viser funktionaliten for adderen med carry.}
+\dsdfig{ex3-1-unsignedtiming}{9cm}{Udsnit af timingsimuleringeringen der viser funktionaliten for adderen med carry.}
 
-For at teste de to adders laves følgende test:
+For at teste de to adders funktionalitere satte vi nogle testcases op, der blot skulle addere to binære input, den ene test er vist i \tabref{shiftdivtest}.
 
 \dsdtab{
 \begin{tabular}{p{3cm}p{3cm}p{3cm}}\toprule
  Input & Forventet output & Reelt output \\\midrule
 \texttt{A: 0b0110+\newline B: 0b0010\phantom{+}} & 
-\texttt{S: 0b1010\newline U: 0b1010} & 
-\texttt{S: 0b1010\newline U: 0b1010}
+\texttt{S: 0b1000\newline U: 0b1000} & 
+\texttt{S: 0b1000\newline U: 0b1000}
 \end{tabular}
 }{Testsetup til signed og unsigned four-bit-adders.}{signedunsigedtest}
-
+ 
 
 % Discussion
 \subsubsection{Diskussion}
 
-Ved den funktionelle timingsimulering fremkom en række uforklarlige outputs, se \figref{strangeTimingSignedUnsignedFunctional} .
+Ved den funktionelle timingsimulering fremkom en række uforklarlige outputs, se \figref{ex3-1-strangeTimingSignedUnsignedFunctional} .
 
-\dsdfig{ex3-1_strangeTimingSignedUnsignedFunctional}{9cm}{Timing issues fra signed og unsigned Adder.}
+\dsdfig{ex3-1-strangeTimingSignedUnsignedFunctional}{9cm}{Timing issues fra signed og unsigned Adder.}
 
 % Conclusion
 \subsubsection{Konklusion}

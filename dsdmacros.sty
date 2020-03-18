@@ -3,8 +3,6 @@
 % NOTE: DSD template
 %       version 0.1, CEF
 %       text file (.tex) assumed to be in utf8 format 
-
-\usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english, danish]{babel} % NOTICE might not compile if danish language pack is not installed
@@ -15,9 +13,18 @@
 \usepackage{xcolor} 
 \usepackage[marginparsep=8pt,left=3cm,right=3cm,top=2.4cm,bottom=2.4cm]{geometry}
 
+
+
+% The looks and feels
+%\usepackage{times} - times new roman ??! Odd choice...
+%\usepackage{kpfonts} % Pretty font
+\usepackage{cmbright} % ComputerModern font
+\setlength\parindent{0pt}
+
 % Additional packages
 \usepackage{booktabs}
 \usepackage{float}
+\usepackage{amsfonts}
 
 \hfuzz=15pt
 \vfuzz=12pt

@@ -1,19 +1,49 @@
+
+
 \subsection{Concatenation}
 
 % Intro 
 \subsubsection{Introduktion}
-Ved at bruge \textit{concatenation} kan der skrives en kode der kan to gange tal\footnote{$a\cdot b \quad a,b \in 2^n \quad 0 < n < 5  $} sammen.
+Ved at bruge \textit{concatenation} kan der skrives en kode der kan to gange tal sammen.
 % Design
 \subsubsection{Design og implementering}
-
 % //TODO gør vi overhovedet det vi skal? - det er jo ikke concatenation
-\dsdsrc{ex03/vhdl/shift_div.vhd}{Entitien der viser de 3 funktioner: \texttt{a\_shl,a\_shr,a\_ror}}{0}{17}
+
+
+Med en viden om at \texttt{0b0001 * 2 = 0b0010 \& 0b0010 * 4 = 0b1000}, og \texttt{0b1000 / 2 = 0b0100 \& 0b0100 / 4 = 0b0001}, skrev vi en kode der på den måde implementerede en bitrearranger, denne ses i \srcref{ex03/vhdl/shift_div.vhd}. Udover bitshifterne, er der også en bitrotater der tager en \textit{slice} af vores \textit{std\_logic\_vector} og omarrangere den i en ny vector \textit{std\_logic\_vector}.
+
+\dsdsrc{ex03/vhdl/shift_div.vhd}{Entitien der viser de 3 funktioner: \texttt{a\_shl,a\_shr,a\_ror}}{0}{20}
+
+\dsdsrc{ex03/vhdl/UnitUnderTest.vhd}{Testbench port mappingen}{55}{66}
+
+Ved at sende et output til LED'erne har vi mulighed for at få et visuelt feedback, og dermed udføre en række test, som ses i \tabref{shiftdivtest}.
+
+\dsdtab{
+\begin{tabular}{p{3cm}p{3cm}p{3cm}}\toprule
+ Input & Forventet output & Reelt output \\\midrule
+\texttt{%
+input:  0b00011110} & \texttt{%
+a\_shl: 0b00111100\newline 
+a\_shr: 0b00000111\newline 
+a\_ror: 0b11000011} & 
+\texttt{%
+a\_shl: 0b00111100\newline 
+a\_shr: 0b00000111\newline 
+a\_ror: 0b11000011}   
+\end{tabular}
+}{Testcase til shift\_div funktionaliteten}{shiftdivtest}
+
+
+
 
 
 % Results
 \subsubsection{Resultater}
-\dsdfig{ex3-2_shiftdivrtl}{9cm}{RTL view af hele entitien i \srcref{ex03/vhdl/shift_div.vhd} - det ses at der ingen logiske elementer bruges - der flyttes blot rundt på forbindelser}
 
+\dsdfig{ex3-2-shiftdivrtl}{9cm}{RTL view af hele entitien i \srcref{ex03/vhdl/shift_div.vhd} --- det ses at der ingen logiske elementer bruges --- der flyttes blot rundt på interne forbindelser.}
+\dsdfig{ex3-2-shiftdivtechmap}{9cm}{Technology mapping view af hele \texttt{shift\_div} funktionen --- igen ses det at der flyttes blot rundt på interne forbindelser.}
+
+Efter syntesen gennemgik vi RTL mappingen og technology mapping viewet - de viser begge at der ikke bliver brugt et eneste logisk element i denne proces. Der kan altså multipliceres og divideres \emph{gratis}\footnote{Dog gælder: $a\cdot b \quad a,b \in 2^n \quad n \in \mathbb{Z}$} i VHDL
 
 % //TODO Billede af shift metoder.
 
@@ -25,6 +55,6 @@ Ved at bruge \textit{concatenation} kan der skrives en kode der kan to gange tal
 % Conclusion
 \subsubsection{Konklusion}
 
-Med få linjer kode kan man skabe en \emph{gratis} funktionalitet - ingen logiske elementer brugt.
+Med få linjer kode kan man skabe en \emph{gratis} funktionalitet, forstået på den måde at \textit{ingen} logiske elementer brugt.
 
 % //TODO shift_div konklusion
