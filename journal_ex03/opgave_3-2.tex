@@ -7,8 +7,6 @@
 Vi ønsker i denne opgave at benytte et af VHDL's biblioteker til simplificere nogle processerser. Dette gøre ved at bruge \textit{concatenation}. Ved at udnytte funktioner fra \texttt{ieee.numeric\_std.ALL} - specielt dens multiplikations og divisions operatøre, vil vi kunne omarrangere bits på en nem måde.
 % Design
 \subsubsection{Design og implementering}
-% //TODO gør vi overhovedet det vi skal? - det er jo ikke concatenation
-
 
 Med en viden om at \texttt{0b0001 * 2 = 0b0010 \& 0b0010 * 4 = 0b1000}, og \texttt{0b1000 / 2 = 0b0100 \& 0b0100 / 4 = 0b0001}, skrev vi en kode der på den måde implementerede en bitrearranger, denne ses i \srcref{ex03/vhdl/shift_div.vhd}. Udover bitshifterne, er der også en bitrotater der tager to \textit{slices} af vores \texttt{std\_logic\_vector} og omarrangere dem i en ny \texttt{std\_logic\_vector}.
 
@@ -16,7 +14,7 @@ Med en viden om at \texttt{0b0001 * 2 = 0b0010 \& 0b0010 * 4 = 0b1000}, og \text
 {Entitien der viser de 3 funktioner: \texttt{a\_shl,a\_shr,a\_ror}}
 {0}{20}
 
-\dsdsrc{ex03/vhdl/UnitUnderTest.vhd}{Testbench port mappingen}{55}{66}
+\dsdsrc{ex03/vhdl/UnitUnderTest.vhd}{Testbench port mappingen}{59}{70}
 
 Ved at sende et output til LED'erne har vi mulighed for at få et visuelt feedback, og dermed udføre en række test, som ses i \tabref{shiftdivtest}.
 
@@ -37,7 +35,7 @@ a\_ror: 0b11000011}
 
 % Results
 \subsubsection{Resultater}
-Testen i \tabref{shiftdivtest} viste tilfredsstillende resultater, der blev 1 shiftet til venstre, 2 til højre og en rotation mod højre.
+Testen i \tabref{shiftdivtest} viste tilfredsstillende resultater, der blev 1 shiftet til venstre, 2 til højre og en rotation på 3 mod højre.
 
 \dsdfig{ex3-2-shiftdivrtl}{9cm}
 {RTL view af hele entitien i \srcref{ex03/vhdl/shift_div.vhd} --- det ses at der ingen logiske elementer bruges --- der flyttes blot rundt på interne forbindelser.}
